@@ -13,10 +13,20 @@ in {
       default = config.networking.hostName;
       description = "The name of the Samba share.";
     };
+
+    sharePath = mkOption {
+      type = types.str;
+      default = "/data/Shares/private";
+      description = "The path to the Samba share.";
+    };
   };
 
   config = mkIf cfg.enable {
-    age.secrets.forgejoToken.file = ../../../secrets/forgejoToken.age;
+    system.activationScripts.createSambaShares = ''
+      mkdir -p ${cfg.sharePath}
+      chown rjm:users ${cfg.sharePath}
+      chmod 755 ${cfg.sharePath}
+    '';
 
     services.samba = {
       enable = true;
@@ -32,11 +42,11 @@ in {
           "guest account" = "nobody";
           "map to guest" = "bad user";
 
-	  # MacOS BS
-	  "vfs objects" = "catia fruit streams_xattr";
-	  "fruit:metadata" = "stream";
-	  "fruit:model" = "MacSamba";
-	  "fruit:posix_rename" = "yes";
+          # MacOS BS
+          "vfs objects" = "catia fruit streams_xattr";
+          "fruit:metadata" = "stream";
+          "fruit:model" = "MacSamba";
+          "fruit:posix_rename" = "yes";
           "fruit:veto_appledouble" = "no";
           "fruit:wipe_intentionally_left_blank_rfork" = "yes";
           "fruit:delete_empty_adfiles" = "yes";
@@ -46,8 +56,8 @@ in {
         # NTRJM - Currently have to type `smbpasswd -a rjm` to add user
         # NTRJM - to samba after creating user in nixos config. FIX!!!
         "private" = {
-	  # NTRJM - Make this properly be owned by rjm
-          "path" = "/data/Shares/private";
+	        # NTRJM - Make this properly be owned by rjm
+          "path" = "${cfg.sharePath}";
           "browesable" = "yes";
           "read only" = "no";
           "guest ok" = "no";
@@ -56,8 +66,8 @@ in {
           "force user" = "rjm";
           "valid users" = "rjm";
 
-	  # More MacOS BS
-	  "vfs objects" = "catia fruit streams_xattr";
+	        # More MacOS BS
+	        "vfs objects" = "catia fruit streams_xattr";
         };
       };
     };

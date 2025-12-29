@@ -31,12 +31,22 @@ in {
           "hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
           "map to guest" = "bad user";
+
+	  # MacOS BS
+	  "vfs objects" = "catia fruit streams_xattr";
+	  "fruit:metadata" = "stream";
+	  "fruit:model" = "MacSamba";
+	  "fruit:posix_rename" = "yes";
+          "fruit:veto_appledouble" = "no";
+          "fruit:wipe_intentionally_left_blank_rfork" = "yes";
+          "fruit:delete_empty_adfiles" = "yes";
         };
 
         # NTRJM - Make this configurable later
         # NTRJM - Currently have to type `smbpasswd -a rjm` to add user
         # NTRJM - to samba after creating user in nixos config. FIX!!!
         "private" = {
+	  # NTRJM - Make this properly be owned by rjm
           "path" = "/data/Shares/private";
           "browesable" = "yes";
           "read only" = "no";
@@ -45,6 +55,9 @@ in {
           "directory mask" = "0755";
           "force user" = "rjm";
           "valid users" = "rjm";
+
+	  # More MacOS BS
+	  "vfs objects" = "catia fruit streams_xattr";
         };
       };
     };

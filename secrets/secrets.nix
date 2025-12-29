@@ -12,6 +12,8 @@ in
   # NTRJM - Organise these better later
   "rjmPw.age".publicKeys = users ++ systems;
   "forgejoToken.age".publicKeys = [ root sticky block ];
+  "registryToken.age".publicKeys = users ++ systems;
+  "starboardEnv.age".publicKeys = users ++ systems;
   "gitFile.age".publicKeys = [ root sticky block ];
   "stickyConfig.age".publicKeys = [ root sticky block ];
   # "artemyConfig.age".publicKeys = [ artemy ];

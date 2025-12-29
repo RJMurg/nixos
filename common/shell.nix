@@ -5,8 +5,8 @@
       set fish_greeting
     '';
     shellInit = ''
-      alias rebuild "sudo nixos-rebuild switch --flake /etc/nixos/.#(hostname)"
-      alias nixconfig "cd /etc/nixos"
+      alias rebuild "sudo nixos-rebuild switch --flake ~/nixos/.#(hostname)"
+      alias nixconfig "cd ~/nixos"
       alias where which
       alias agedit "nix run github:ryantm/agenix -- --identity /etc/ssh/ssh_host_ed25519_key -e"
     '';

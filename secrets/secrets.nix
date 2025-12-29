@@ -1,5 +1,6 @@
 let
   rjm = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKizxhkpIN/7+bQShmOhq8hJLOzRXGhkOGdfgMbCEFcZ";
+  root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQpf9nMOyXwqTQRogphnel0HIK5Eqip8Owzu7xgZ/qO root@nixos"
   users = [ rjm ];
 
   daniil = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeLqxshroeY9js/xM/RqL+PDydqwEALHzOv7PrBvdzZ";

@@ -1,5 +1,5 @@
 { config, ... }: {
-  age.secrets.rjmPw.file = ./secrets/rjmPw.age;
+  age.secrets.rjmPw.file = ../secrets/rjmPw.age;
 
   users.users.rjm = {
     isNormalUser = true;

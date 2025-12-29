@@ -27,7 +27,7 @@ in {
           "server string" = "${cfg.shareName} Samba Server";
           "netbios name" = cfg.shareName;
           "security" = "user";
-          "hosts allow" = "102.168.5. 127.";
+          "hosts allow" = "192.168.5. 127.";
           "hosts deny" = "0.0.0.0/0";
           "guest account" = "nobody";
           "map to guest" = "bad user";

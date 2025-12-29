@@ -76,6 +76,6 @@
           agenix.nixosModules.default
         ];
       };
-    }
-  }
+    };
+  };
 }

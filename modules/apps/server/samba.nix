@@ -23,14 +23,14 @@ in {
       openFirewall = true;
       settings = {
         global = {
-          workgroup = "WORKGROUP";
-          server string = "${cfg.shareName} Samba Server";
-          netbios name = cfg.shareName;
-          security = "user";
-          hosts allow = "102.168.5. 127.";
-          hosts deny = "0.0.0.0/0";
-          guest account = "nobody";
-          map to guest = "bad user";
+          "workgroup" = "WORKGROUP";
+          "server string" = "${cfg.shareName} Samba Server";
+          "netbios name" = cfg.shareName;
+          "security" = "user";
+          "hosts allow" = "102.168.5. 127.";
+          "hosts deny" = "0.0.0.0/0";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
         };
 
         # NTRJM - Make this configurable later

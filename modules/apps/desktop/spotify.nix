@@ -1,4 +1,4 @@
-{ ... }: {
+{ pkgs, ... }: {
   # NTRJM - Consider moving to Spotifyd?
 
   environment.systemPackages = with pkgs; [

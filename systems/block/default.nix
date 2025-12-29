@@ -18,7 +18,7 @@
   servers.samba ={
     enable = true;
     shareName = "block";
-  }
+  };
 
   # 6TB DRIVE
   fileSystems."/data" = {

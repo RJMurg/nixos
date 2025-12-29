@@ -15,6 +15,11 @@
     runnerCapacity = 2;
   };
 
+  servers.samba ={
+    enable = true;
+    shareName = "block";
+  }
+
   # 6TB DRIVE
   fileSystems."/data" = {
     device = "/dev/sda1";

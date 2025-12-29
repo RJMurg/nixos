@@ -1,6 +1,6 @@
 let
   rjm = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKizxhkpIN/7+bQShmOhq8hJLOzRXGhkOGdfgMbCEFcZ";
-  root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQpf9nMOyXwqTQRogphnel0HIK5Eqip8Owzu7xgZ/qO root@nixos"
+  root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQpf9nMOyXwqTQRogphnel0HIK5Eqip8Owzu7xgZ/qO root@nixos";
   users = [ rjm root ];
 
   daniil = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeLqxshroeY9js/xM/RqL+PDydqwEALHzOv7PrBvdzZ";
@@ -11,8 +11,8 @@ in
 {
   # NTRJM - Organise these better later
   "rjmPw.age".publicKeys = users ++ systems;
-  "forgejoToken.age".publicKeys = [ sticky block ];
-  "gitFile.age".publicKeys = [ sticky block ];
-  "stickyConfig.age".publicKeys = [ sticky ];
+  "forgejoToken.age".publicKeys = [ root sticky block ];
+  "gitFile.age".publicKeys = [ root sticky block ];
+  "stickyConfig.age".publicKeys = [ root sticky block ];
   # "artemyConfig.age".publicKeys = [ artemy ];
 }

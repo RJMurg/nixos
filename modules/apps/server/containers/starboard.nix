@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.servers.containers.starboard;
 in {
   options.servers.containers.starboard = {
@@ -31,7 +33,7 @@ in {
         privileged = false;
         autoStart = cfg.autoStart;
 
-        environmentFiles = [ config.age.secrets.starboardEnv.path ];
+        environmentFiles = [config.age.secrets.starboardEnv.path];
 
         podman = {
           user = "starboard";
@@ -63,7 +65,7 @@ in {
         privileged = false;
         autoStart = cfg.autoStart;
 
-        environmentFiles = [ config.age.secrets.starboardEnv.path ];
+        environmentFiles = [config.age.secrets.starboardEnv.path];
 
         podman = {
           user = "starboard-db";
@@ -87,9 +89,10 @@ in {
         group = "starboard-db";
         home = "/var/lib/starboard-db";
         createHome = true;
-        extraGroups = [ "systemd-journal" ];
+        extraGroups = ["systemd-journal"];
       };
 
       groups.starboard-db = {};
+    };
   };
 }

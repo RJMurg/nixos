@@ -5,7 +5,7 @@
     nixpkgs = {
       url = "github:NixOS/nixpkgs/nixos-unstable";
     };
-    
+
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,23 +17,29 @@
     };
   };
 
-  outputs = { self, nixpkgs, disko, agenix } @ inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    disko,
+    agenix,
+    alejandra,
+  } @ inputs: let
     lib = nixpkgs.lib;
     createSystem = {
       host,
       type,
-      optionalModules
+      optionalModules,
     }:
       lib.nixosSystem {
-        specialArgs = { inherit ( inputs ) self; };
-        modules = [
-          ./systems/${host}
-        ] ++ optionalModules;
+        specialArgs = {inherit (inputs) self;};
+        modules =
+          [
+            ./systems/${host}
+          ]
+          ++ optionalModules;
       };
-
   in {
     nixosConfigurations = {
-
       # ---
       # PCs
       # ---

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -15,7 +15,7 @@
     runnerCapacity = 2;
   };
 
-  servers.samba ={
+  servers.samba = {
     enable = true;
     shareName = "block";
   };
@@ -25,7 +25,7 @@
     device = "/dev/sda1";
     fsType = "ext4";
     autoFormat = true;
-    options = [ "users" ];
+    options = ["users"];
   };
 
   # MOTD

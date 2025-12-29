@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.servers.containers.traefik;
 in {
   options.servers.containers.traefik = {
@@ -67,9 +69,10 @@ in {
         group = "traefik";
         home = "/var/lib/traefik";
         createHome = true;
-        extraGroups = [ "systemd-journal" ];
+        extraGroups = ["systemd-journal"];
       };
 
       groups.traefik = {};
+    };
   };
 }

@@ -1,4 +1,4 @@
-{ ... }: {
+{...}: {
   programs.ssh = {
     extraConfig = "
       Host theta

@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   imports = map (f: ./${f}) (builtins.filter (f: f != "default.nix") (builtins.attrNames (builtins.readDir ./.)));
 
   # NixOS Version
@@ -56,7 +56,7 @@
       PasswordAuthentication = false;
       KbdInteractiveAuthentication = false;
       PermitRootLogin = "no";
-      AllowUsers = [ "rjm" ];
+      AllowUsers = ["rjm"];
     };
   };
 

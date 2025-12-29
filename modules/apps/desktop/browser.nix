@@ -1,7 +1,7 @@
-{ ... }: {
+{...}: {
   programs.firefox = {
     enable = true;
-    languagePacks = [ "en-US" "en-GB" "de" ];
+    languagePacks = ["en-US" "en-GB" "de"];
 
     preferences = {
       "browser.startup.homepage" = "https://start.rjm.ie";

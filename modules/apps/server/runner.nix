@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.servers.runner;
 in {
   options.servers.runner = {
@@ -38,16 +40,16 @@ in {
         ];
 
         settings = {
-        container = {
-          network = "host";
-          privileged = true;
-          valid_volumes = [ "**" ];
-          docker_host = "automount";
+          container = {
+            network = "host";
+            privileged = true;
+            valid_volumes = ["**"];
+            docker_host = "automount";
+          };
+          runner = {
+            capacity = cfg.runnerCapacity;
+          };
         };
-        runner = {
-          capacity = cfg.runnerCapacity;
-        };
-      };
       };
     };
 
@@ -55,7 +57,7 @@ in {
     users.users.gitea-runner = {
       isSystemUser = true;
       group = "gitea-runner";
-      extraGroups = [ "docker" ];
+      extraGroups = ["docker"];
     };
   };
 }

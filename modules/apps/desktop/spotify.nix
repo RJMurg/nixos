@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   # NTRJM - Consider moving to Spotifyd?
 
   environment.systemPackages = with pkgs; [
@@ -6,5 +6,5 @@
   ];
 
   # Allow syncing local tracks
-  networking.firewall.allowedTCPPorts = [ 57621 ];
+  networking.firewall.allowedTCPPorts = [57621];
 }

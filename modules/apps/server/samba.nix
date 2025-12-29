@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.servers.samba;
 in {
   options.servers.samba = {
@@ -56,7 +58,7 @@ in {
         # NTRJM - Currently have to type `smbpasswd -a rjm` to add user
         # NTRJM - to samba after creating user in nixos config. FIX!!!
         "private" = {
-	        # NTRJM - Make this properly be owned by rjm
+          # NTRJM - Make this properly be owned by rjm
           "path" = "${cfg.sharePath}";
           "browesable" = "yes";
           "read only" = "no";
@@ -66,8 +68,8 @@ in {
           "force user" = "rjm";
           "valid users" = "rjm";
 
-	        # More MacOS BS
-	        "vfs objects" = "catia fruit streams_xattr";
+          # More MacOS BS
+          "vfs objects" = "catia fruit streams_xattr";
         };
       };
     };

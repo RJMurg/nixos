@@ -1,4 +1,4 @@
-{ config, ... }: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ../../modules/infra/standalone
@@ -10,11 +10,11 @@
 
   networking.hostName = "daniil";
 
-  users.users.rjm.extraGroups = [ "networkmanager" ];
+  users.users.rjm.extraGroups = ["networkmanager"];
 
   # NVIDIA stuff
   hardware.graphics.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     open = true;
 

@@ -1,8 +1,10 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+with lib; let
   cfg = config.servers.containers.site;
 in {
   options.servers.containers.site = {
@@ -59,9 +61,10 @@ in {
         group = "site";
         home = "/var/lib/site";
         createHome = true;
-        extraGroups = [ "systemd-journal" ];
+        extraGroups = ["systemd-journal"];
       };
 
       groups.site = {};
+    };
   };
 }

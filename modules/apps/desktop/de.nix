@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   services.xserver.enable = true;
 
   # KDE Plasma DE
@@ -23,7 +23,7 @@
 
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    extraPortals = with pkgs; [xdg-desktop-portal-hyprland];
   };
 
   # Because Hyprland is so bare-bones, I'll include the remaining hyprsystem stuff here

@@ -1,6 +1,6 @@
-{ ... }: {
+{...}: {
   systemd.timers."garbage-day" = {
-    wantedBy = [ "timers.target" ];
+    wantedBy = ["timers.target"];
 
     timerConfig = {
       OnCalendar = "*-*-* 03:00";

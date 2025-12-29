@@ -1,4 +1,4 @@
-{ ... }: {
+{ config, ... }: {
   age.secrets.rjmPw.file = /etc/nixos/secrets/rjmPw.age;
 
   users.users.rjm = {

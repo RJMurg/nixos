@@ -25,10 +25,10 @@ in {
     age.secrets.forgejoToken.file = ../../../secrets/forgejoToken.age;
 
     services.gitea-actions-runner = {
-      enable = true;
       package = pkgs.forgejo-runner;
 
       instances.default = {
+        enable = true;
         name = cfg.runnerName;
         url = "https://git.rjm.ie";
         tokenFile = config.age.secrets.forgejoToken.path;
@@ -36,9 +36,8 @@ in {
           "ubuntu-latest:docker://ghcr.io/catthehacker/ubuntu:act-latest"
           "act-runner:docker://node:20-bullseye"
         ];
-      };
 
-      settings = {
+        settings = {
         container = {
           network = "host";
           privileged = true;
@@ -48,6 +47,7 @@ in {
         runner = {
           capacity = cfg.runnerCapacity;
         };
+      };
       };
     };
 

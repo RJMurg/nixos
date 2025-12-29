@@ -25,6 +25,7 @@
       svelte.svelte-vscode
       myriad-dreamin.tinymist
       streetsidesoftware.code-spell-checker
+      jnoortheen.nix-ide
     ];
   };
 }

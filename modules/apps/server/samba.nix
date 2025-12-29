@@ -34,6 +34,8 @@ in {
         };
 
         # NTRJM - Make this configurable later
+        # NTRJM - Currently have to type `smbpasswd -a rjm` to add user
+        # NTRJM - to samba after creating user in nixos config. FIX!!!
         "private" = {
           "path" = "/data/Shares/private";
           "browesable" = "yes";

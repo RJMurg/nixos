@@ -9,11 +9,22 @@ let
   systems = [daniil sticky block];
 in {
   # NTRJM - Organise these better later
+
+  # Common Secrets
   "rjmPw.age".publicKeys = users ++ systems;
-  "forgejoToken.age".publicKeys = [root sticky block];
-  "registryToken.age".publicKeys = users ++ systems;
-  "starboardEnv.age".publicKeys = users ++ systems;
   "gitFile.age".publicKeys = [root sticky block];
+  
+  # WG Secrets
   "stickyConfig.age".publicKeys = [root sticky block];
   # "artemyConfig.age".publicKeys = [ artemy ];
+  
+  # Container Envs
+  "registryToken.age".publicKeys = users ++ systems;
+  "starboardEnv.age".publicKeys = users ++ systems;
+  "foundryEnv.age".publicKeys = users ++ systems;
+  "ghostEnv.age".publicKeys = users ++ systems;
+  "grabengineEnv.age".publicKeys = users ++ systems;
+
+  # Service Secrets
+  "forgejoToken.age".publicKeys = [root sticky block];
 }

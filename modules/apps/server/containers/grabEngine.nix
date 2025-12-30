@@ -5,48 +5,41 @@
   ...
 }:
 with lib; let
-  cfg = config.servers.containers.starboard;
+  cfg = config.servers.containers.grabEngine;
 in {
-  options.servers.containers.starboard = {
-    enable = mkEnableOption "Starboard";
+  options.servers.containers.grabEngine = {
+    enable = mkEnableOption "Grab Engine";
 
     autoStart = mkOption {
       type = types.bool;
       default = true;
-      description = "Autostart Starboard";
+      description = "Autostart Grab Engine";
     };
   };
 
   config = mkIf cfg.enable {
-    age.secrets.registryToken.file = ../../secrets/registryToken.age;
-    age.secrets.starboardEnv.file = ../../secrets/starboardEnv.age;
+    age.secrets.grabengineEnv.file = ../../secrets/grabengineEnv.age;
 
     virtualisation.oci-containers.containers = {
-      starboard = {
-        login = {
-          registry = "https://git.rjm.ie";
-          username = "rjmurg";
-          passwordFile = config.age.secrets.registryToken.path;
-        };
-
-        image = "git.rjm.ie/rjmurg/friendconstellation:latest";
+      grabengine = {
+        image = "ghcr.io/rjmurg/grabengine:latest";
         privileged = false;
         autoStart = cfg.autoStart;
 
-        environmentFiles = [config.age.secrets.starboardEnv.path];
+        environmentFiles = [config.age.secrets.grabengineEnv.path];
 
         podman = {
-          user = "starboard";
+          user = "grabengine";
           sdnotify = "healthy";
         };
 
         dependsOn = [
-          "starboard-db"
+          "grabengine-db"
         ];
 
         networks = [
           "traefik-external"
-          "starboard"
+          "grabengine"
         ];
 
         labels = [
@@ -60,20 +53,20 @@ in {
         ];
       };
 
-      starboard-db = {
+      grabengine-db = {
         image = "postgres:18-alpine";
         privileged = false;
         autoStart = cfg.autoStart;
 
-        environmentFiles = [config.age.secrets.starboardEnv.path];
+        environmentFiles = [config.age.secrets.grabengineEnv.path];
 
         podman = {
-          user = "starboard-db";
+          user = "grabengine-db";
           sdnotify = "healthy";
         };
 
         networks = [
-          "starboard"
+          "grabengine"
         ];
 
         volumes = [
@@ -83,26 +76,26 @@ in {
     };
 
     users = {
-      users.starboard = {
+      users.grabengine = {
         isSystemUser = true;
         linger = true;
-        group = "starboard";
-        home = "/var/lib/starboard";
+        group = "grabengine";
+        home = "/var/lib/grabengine";
         createHome = true;
         extraGroups = ["systemd-journal"];
       };
 
-      users.starboard-db = {
+      users.grabengine-db = {
         isSystemUser = true;
         linger = true;
-        group = "starboard-db";
-        home = "/var/lib/starboard-db";
+        group = "grabengine-db";
+        home = "/var/lib/grabengine-db";
         createHome = true;
         extraGroups = ["systemd-journal"];
       };
 
-      groups.starboard = {};
-      groups.starboard-db = {};
+      groups.grabengine = {};
+      groups.grabengine-db = {};
     };
   };
 }

@@ -19,6 +19,12 @@
   servers.containers.forgejo.enable = true;
   servers.containers.bentoPdf.enable = true;
   servers.containers.grabEngine.enable = true;
+  servers.containers.mcJava = {
+    enable = true;
+    memory = 6;
+    enableRcon = true;
+    enableBackup = true;
+  };
 
   # NTRJM - Finish Glance first
   servers.containers.glance.enable = false;

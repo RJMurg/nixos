@@ -28,6 +28,10 @@ in {
 
         environmentFiles = [config.age.secrets.foundryEnv.path];
 
+        environment = {
+          FOUNDRY_HOSTNAME = "vtt.rjm.ie";
+        };
+
         podman = {
           user = "foundry";
           sdnotify = "healthy";

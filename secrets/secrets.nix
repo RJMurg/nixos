@@ -1,6 +1,6 @@
 let
   rjm = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKizxhkpIN/7+bQShmOhq8hJLOzRXGhkOGdfgMbCEFcZ";
-  root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQpf9nMOyXwqTQRogphnel0HIK5Eqip8Owzu7xgZ/qO root@nixos";
+  root = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDQpf9nMOyXwqTQRogphnel0HIK5Eqip8Owzu7xgZ/qO";
   users = [rjm root];
 
   daniil = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHeLqxshroeY9js/xM/RqL+PDydqwEALHzOv7PrBvdzZ";
@@ -24,6 +24,7 @@ in {
   "foundryEnv.age".publicKeys = users ++ systems;
   "ghostEnv.age".publicKeys = users ++ systems;
   "grabengineEnv.age".publicKeys = users ++ systems;
+  "mcJavaEnv.age".publicKeys = users ++ systems;
 
   # Service Secrets
   "forgejoToken.age".publicKeys = [root sticky block];

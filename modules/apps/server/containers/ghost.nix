@@ -28,6 +28,10 @@ in {
 
         environmentFiles = [config.age.secrets.ghostEnv.path];
 
+        environment = {
+          url = "https://blog.rjm.ie";
+        }
+
         podman = {
           user = "ghost";
           sdnotify = "healthy";

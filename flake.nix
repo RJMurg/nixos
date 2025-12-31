@@ -15,6 +15,11 @@
       url = "github:ryantm/agenix";
       inputs.darwin.follows = "";
     };
+
+    alejandra = {
+      url = "github:kamadorueda/alejandra/4.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
